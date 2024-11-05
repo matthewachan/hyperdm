@@ -1,4 +1,5 @@
 # hyperdm
+
 This is the official codebase for the NeurIPS 2024 paper ["Estimating Epistemic and Aleatoric Uncertainty with a Single Model"](https://nips.cc/virtual/2024/poster/94833).
 
 ### Abstract
@@ -7,10 +8,10 @@ This is the official codebase for the NeurIPS 2024 paper ["Estimating Epistemic 
 
 # Usage
 
-
-### Dependencies 
+### Dependencies
 
 Using Python 3.11.9, please install dependencies by running:
+
 ```sh
 $ pip install -r requirements.txt
 ```
@@ -18,12 +19,19 @@ $ pip install -r requirements.txt
 ### Toy Experiment
 
 We include `Makefile` build targets for generating toy experiment figures.
+
 - To visualize HyperDM results, run `make toy_result.pdf`.
 - To visualize deep ensemble results, run `make toy_baseline.pdf`.
+
+<img src="img/hyperdm.png" alt="drawing" width="300"/>
+<img src="img/deep_ensemble.png" alt="drawing" width="300"/>
+
+**Note:** As mentioned in our paper, AU is unreliable (and should be disregarded) when EU is high.
 
 # Citation
 
 Please cite our work using this BibTeX snippet:
+
 ```
 @article{chan2024hyper,
   title={Estimating Epistemic and Aleatoric Uncertainty with a Single Model},
