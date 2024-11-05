@@ -23,9 +23,9 @@ We include `Makefile` build targets for generating toy experiment figures.
 - To visualize HyperDM results, run `make toy_result.pdf`.
 - To visualize deep ensemble results, run `make toy_baseline.pdf`.
 
-|                    `toy_result.pdf`                    |                      `toy_baseline.pdf`                      |
-| :----------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="img/hyperdm.png" alt="drawing" width="350"/> | <img src="img/deep_ensemble.png" alt="drawing" width="350"/> |
+|   `toy_result.pdf`   |     `toy_baseline.pdf`     |
+| :------------------: | :------------------------: |
+| ![](img/hyperdm.png) | ![](img/deep_ensemble.png) |
 
 **Note:** As mentioned in our paper, AU is unreliable (and should be disregarded) when EU is high.
 
