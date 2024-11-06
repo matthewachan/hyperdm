@@ -34,7 +34,7 @@ We include `Makefile` build targets for generating toy experiment figures.
 
 Run `make era5_result.pdf` to train HyperDM on [ERA5](https://www.ecmwf.int/en/forecasts/dataset/ecmwf-reanalysis-v5) and validate EU on an out-of-distribution test input. 
 
-**Note:** On the first run, add the `--download` flag to ERA5 build instructions in `Makefile` to download the dataset.
+**Note:** On your first run, download the dataset by adding the `--download` flag to ERA5 build instructions in `Makefile`.
 
 | `era5_result.pdf` |
 | :------------------: |
@@ -42,7 +42,7 @@ Run `make era5_result.pdf` to train HyperDM on [ERA5](https://www.ecmwf.int/en/f
 
 # Citation
 
-Please cite us if you found our work useful!
+Please cite us if you found our work useful :)
 
 ```
 @article{chan2024hyper,
