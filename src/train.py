@@ -1,12 +1,14 @@
 import numpy as np
 import torch as th
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Subset
 from tqdm import tqdm
 
 from data.dataset import Dataset
+from data.era5 import ERA5
 from data.toy import ToyDataset
 from guided_diffusion.script_util import create_gaussian_diffusion
 from model.mlp import MLP
+from model.unet import Unet
 from src.hyperdm import HyperDM
 from src.util import parse_train_args
 
@@ -24,14 +26,20 @@ if __name__ == "__main__":
     if args.dataset == Dataset.TOY:
         primary_net = MLP([3, 8, 16, 8, 1])
         dataset = ToyDataset(args.dataset_size, split="train")
+    elif args.dataset == Dataset.ERA5:
+        primary_net = Unet(dim=16,
+                           dim_mults=(1, 2, 4, 8),
+                           channels=1,
+                           self_condition=True)
+        dataset = ERA5(args.image_size, split="train", download=args.download)
+        dataset = Subset(dataset, range(args.dataset_size))
     else:
         raise NotImplementedError()
 
     # Initialize network
     diffusion = create_gaussian_diffusion(steps=args.diffusion_steps,
                                           predict_xstart=True)
-    hyperdm = HyperDM(primary_net, args.hyper_net_input_dim,
-                      diffusion).to(device)
+    hyperdm = HyperDM(primary_net, args.hyper_net_dims, diffusion).to(device)
     hyperdm.print_stats()
     hyperdm.train()
     optimizer = th.optim.AdamW(hyperdm.parameters(), args.lr)

@@ -1,6 +1,7 @@
-# hyperdm
+# Hyper-Diffusion Models (HyperDM)
+*Authors: [Matthew A. Chan](https://www.cs.umd.edu/~mattchan/), [Maria J. Molina](https://mariajmolina.github.io/), [Christopher A. Metzler](https://www.cs.umd.edu/~metzler/)*
 
-This is the official codebase for the NeurIPS 2024 paper ["Estimating Epistemic and Aleatoric Uncertainty with a Single Model"](https://nips.cc/virtual/2024/poster/94833).
+This is the official codebase for the NeurIPS 2024 paper ["Estimating Epistemic and Aleatoric Uncertainty with a Single Model"](https://arxiv.org/abs/2402.03478).
 
 ### Abstract
 
@@ -10,13 +11,13 @@ This is the official codebase for the NeurIPS 2024 paper ["Estimating Epistemic 
 
 ### Dependencies
 
-Using Python 3.11.9, please install dependencies by running:
+Using Python (v3.11.9), please install dependencies by running:
 
 ```sh
 $ pip install -r requirements.txt
 ```
 
-### Toy Experiment
+## Toy Experiment
 
 We include `Makefile` build targets for generating toy experiment figures.
 
@@ -29,9 +30,19 @@ We include `Makefile` build targets for generating toy experiment figures.
 
 **Note:** As mentioned in our paper, AU is unreliable (and should be disregarded) when EU is high.
 
+## Surface Temperature Forecasting Experiment
+
+Run `make era5_result.pdf` to train HyperDM on [ERA5](https://www.ecmwf.int/en/forecasts/dataset/ecmwf-reanalysis-v5) and validate EU on an out-of-distribution test input. 
+
+**Note:** On your first run, download the dataset by adding the `--download` flag to ERA5 build instructions in `Makefile`.
+
+| `era5_result.pdf` |
+| :------------------: |
+| ![](img/era5.png) |
+
 # Citation
 
-Please cite our work using this BibTeX snippet:
+Please cite us if you found our work useful :)
 
 ```
 @article{chan2024hyper,
