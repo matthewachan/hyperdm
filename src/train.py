@@ -31,7 +31,7 @@ if __name__ == "__main__":
                            dim_mults=(1, 2, 4, 8),
                            channels=1,
                            self_condition=True)
-        dataset = ERA5(args.image_size, split="train")
+        dataset = ERA5(args.image_size, split="train", download=args.download)
         dataset = Subset(dataset, range(args.dataset_size))
     else:
         raise NotImplementedError()

@@ -1,4 +1,4 @@
-from argparse import ArgumentParser
+from argparse import ArgumentParser, BooleanOptionalAction
 
 import numpy as np
 
@@ -38,6 +38,7 @@ def parse_train_args():
     parser.add_argument("--seed", type=int)
     parser.add_argument("--dataset", type=Dataset, choices=list(Dataset))
     parser.add_argument("--dataset_size", type=int, default=1000)
+    parser.add_argument('--download', action=BooleanOptionalAction)
     parser.add_argument("--image_size", type=int, default=256)
     parser.add_argument("--checkpoint", type=str, default="model.pt")
     parser.add_argument("--num_epochs", type=int, default=100)
@@ -53,6 +54,7 @@ def parse_test_args():
     parser.add_argument("--seed", type=int)
     parser.add_argument("--dataset", type=Dataset, choices=list(Dataset))
     parser.add_argument("--dataset_size", type=int, default=1000)
+    parser.add_argument('--download', action=BooleanOptionalAction)
     parser.add_argument("--image_size", type=int, default=256)
     parser.add_argument("--checkpoint", type=str, default="model.pt")
     parser.add_argument("--M", type=int, default=100)

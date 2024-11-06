@@ -76,7 +76,7 @@ def era5_test(args):
                        dim_mults=(1, 2, 4, 8),
                        channels=1,
                        self_condition=True)
-    dataset = ERA5(args.image_size, split="test")
+    dataset = ERA5(args.image_size, split="test", download=args.download)
 
     # Initialize network
     diffusion = create_gaussian_diffusion(steps=args.diffusion_steps,
