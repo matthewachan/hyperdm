@@ -33,6 +33,7 @@ def circular_mask(h: int, w: int, center: tuple, radius: int):
     return mask
 
 
+
 def parse_train_args():
     parser = ArgumentParser()
     parser.add_argument("--seed", type=int)
