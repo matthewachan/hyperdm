@@ -2,6 +2,7 @@ from functools import partial
 
 import torch as th
 from tqdm import tqdm
+from typing import List
 
 from guided_diffusion.gaussian_diffusion import GaussianDiffusion
 from model.mlp import MLP
@@ -9,13 +10,13 @@ from model.mlp import MLP
 
 class HyperDM(th.nn.Module):
 
-    def __init__(self, primary_net: th.nn.Module, hyper_net_input_dim: int,
+    def __init__(self, primary_net: th.nn.Module, hyper_net_dims: List[int],
                  diffusion: GaussianDiffusion):
         """
         Initialize the hyper-diffusion model class.
 
         :param primary_net: diffusion model
-        :param hyper_net_input_dim: hyper-network input feature dimensions
+        :param hyper_net_dims: hyper-network layer dimensions
         :param diffusion: Gaussian diffusion process
         """
         super().__init__()
@@ -26,9 +27,9 @@ class HyperDM(th.nn.Module):
         for param in primary_net.parameters():
             param.requires_grad = False
 
-        self.hyper_net_input_dim = hyper_net_input_dim
-        self.hyper_net = MLP(
-            [hyper_net_input_dim, 8, 8, 8, 8, 8, self.primary_params])
+        hyper_net_dims.append(self.primary_params)
+        self.hyper_net_input_dim = hyper_net_dims[0]
+        self.hyper_net = MLP(hyper_net_dims)
         self.hyper_net = self.hyper_net
         self.hyper_params = sum(p.numel() for p in self.hyper_net.parameters())
 
