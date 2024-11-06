@@ -1,6 +1,6 @@
 # hyperdm
 
-This is the official codebase for the NeurIPS 2024 paper ["Estimating Epistemic and Aleatoric Uncertainty with a Single Model"](https://nips.cc/virtual/2024/poster/94833).
+This is the official codebase for the NeurIPS 2024 paper ["Estimating Epistemic and Aleatoric Uncertainty with a Single Model"](https://arxiv.org/abs/2402.03478).
 
 ### Abstract
 
@@ -16,7 +16,7 @@ Using Python 3.11.9, please install dependencies by running:
 $ pip install -r requirements.txt
 ```
 
-### Toy Experiment
+## Toy Experiment
 
 We include `Makefile` build targets for generating toy experiment figures.
 
@@ -28,6 +28,14 @@ We include `Makefile` build targets for generating toy experiment figures.
 | ![](img/hyperdm.png) | ![](img/deep_ensemble.png) |
 
 **Note:** As mentioned in our paper, AU is unreliable (and should be disregarded) when EU is high.
+
+## Surface Temperature Forecasting Experiment
+
+Run `make era5_result.pdf` to train HyperDM on [ERA5](https://www.ecmwf.int/en/forecasts/dataset/ecmwf-reanalysis-v5) and validate EU on an out-of-distribution test input.
+
+| `era5_result.pdf` |
+| :------------------: |
+| ![](img/era5.png) |
 
 # Citation
 
